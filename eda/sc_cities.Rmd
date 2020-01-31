@@ -1,0 +1,37 @@
+---
+title: South Carolina Cities EDA
+author: Neil Singh
+date: "`r Sys.Date()`"
+output: 
+  github_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message=FALSE, warning=FALSE}
+# Libraries
+library(tidyverse)
+
+# Parameters
+file_in <- here::here("data/sc_cities.rds")
+sc_cities <-  read_rds(file_in)
+#===============================================================================
+
+# Code
+```
+
+## City in South Carolina with the most evictions
+
+```{r}
+sc_cities %>% 
+  count(name, wt = evictions, sort = TRUE) %>% 
+  glimpse()
+```
+
+North Charleston had the most evictions in 2016. Side note, what does .10 evictions mean?
+
+
+
